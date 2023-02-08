@@ -25,8 +25,8 @@ I will have a comic table on the character page. It will have multiple different
 Initial Designs
 ---------------
 
-![Sample Layout](./docs/SampleLayout.png)
-![SiteMap](./docs/SiteMap.png)
+![Sample Layout](./SampleLayout.png)
+![SiteMap](./SiteMap.png)
 
 
 
