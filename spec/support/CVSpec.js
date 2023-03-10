@@ -1,57 +1,55 @@
-const {queryAllCharacters, queryAllComics} = require('../../server.js')
+const { queryAllCharacters, queryAllComics } = require('../../server.js')
 
 describe('server', function () {
-    const baseURL = 'http://localhost:5163'
+  const baseURL = 'http://localhost:5163'
 
-    const shouldBeAbove200 = async function (route) {
-        it('should be above 200', async function () {
-            const url = new URL(route, baseURL)
+  const shouldBeAbove200 = async function (route) {
+    it('should be above 200', async function () {
+      const url = new URL(route, baseURL)
 
-            const res = await fetch(url)
+      const res = await fetch(url)
 
-            expect(res.status).toBeGreaterThanOrEqual(200)
+      expect(res.status).toBeGreaterThanOrEqual(200)
+    }, 10000)
+  }
 
+  const shouldBeBelow399 = async function (route) {
+    it('should be below 399', async function () {
+      const url = new URL(route, baseURL)
 
-        }, 10000)
-    }
+      const res = await fetch(url)
 
-    const shouldBeBelow399 = async function (route) {
-        it('should be below 399', async function () {
-            const url = new URL(route, baseURL)
+      expect(res.status).toBeLessThanOrEqual(399)
+    }, 10000)
+  }
 
-            const res = await fetch(url)
+  describe("GET '/health'", function () {
+    shouldBeAbove200('/health')
+  })
 
-            expect(res.status).toBeLessThanOrEqual(399)
+  describe("GET '/health'", function () {
+    shouldBeBelow399('/health')
+  })
 
+  describe("GET '/'", function () {
+    shouldBeAbove200('/health')
+  })
 
-        }, 10000)
-    }
+  describe("GET '/'", function () {
+    shouldBeBelow399('/health')
+  })
 
-    const queryCheck = async function (route) {
-        it('check database queries', async function () {
-            expect(characterData).notEqual(null)
-
-            expect(comicData).notEqual(null)
-        })
-    }
-
-    describe("GET '/health'", function () {
-        shouldBeAbove200('/health')
+  describe('queryAllCharacters', function () {
+    it('should be defined', async function () {
+      const characterData = await queryAllCharacters()
+      expect(characterData).toBeDefined()
     })
+  })
 
-    describe("GET '/health'", function () {
-        shouldBeBelow399('/health')
+  describe('queryAllComics', function () {
+    it('should be defined', async function () {
+      const comicData = await queryAllComics()
+      expect(comicData).toBeDefined()
     })
-
-    describe("GET '/'", function () {
-        shouldBeAbove200('/health')
-    })
-
-    describe("GET '/'", function () {
-        shouldBeBelow399('/health')
-    })
-
-    describe ("GET '/getSQL'", function () {
-        queryCheck('/getSQL')
-    })
+  })
 })

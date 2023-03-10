@@ -13,7 +13,6 @@ const pool = new Pool({
 })
 
 const query = async function (sql, params) {
-
   let client
   let results = []
   try {
@@ -29,20 +28,20 @@ const query = async function (sql, params) {
   return results
 }
 
-const queryAllCharacters = async function() {
+const queryAllCharacters = async function () {
   const sql = 'SELECT * FROM character;'
 
   const results = await query(sql)
 
-  return {characters: results}
+  return { characters: results }
 }
 
-const queryAllComics = async function() {
+const queryAllComics = async function () {
   const sql = 'SELECT * FROM comic;'
 
   const results = await query(sql)
 
-  return {comics: results}
+  return { comics: results }
 }
 
 express()
@@ -56,16 +55,9 @@ express()
   })
   .get('/health', async function (req, res) {
     const characters = await queryAllCharacters()
-
-    if (characters != null) {
-      res.status(200).send('healthy')
-    } else {
-      res.status(500).send('query failed')
-    }
-
     const comics = await queryAllComics()
 
-    if (comics != null) {
+    if (characters != null && comics != null) {
       res.status(200).send('healthy')
     } else {
       res.status(500).send('query failed')
@@ -74,20 +66,18 @@ express()
   .get('/about', function (req, res) {
     res.render('pages/about')
   })
-  .get('/getSQL', async function(req, res) {
+  .get('/getSQL', async function (req, res) {
     const characterData = await queryAllCharacters()
     res.render('pages/character', characterData)
 
     const comicData = await queryAllComics()
     res.render('pages/comic', comicData)
   })
-  
-
   // end of implementation ///////////////////////////////////
   .listen(PORT, () => console.log(`Listening on ${PORT}`))
 
-  module.exports = {
-    query,
-    queryAllCharacters,
-    queryAllComics
-  }
+module.exports = {
+  query,
+  queryAllCharacters,
+  queryAllComics
+}
