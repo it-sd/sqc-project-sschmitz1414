@@ -6,3 +6,6 @@ The Collector's Vault is a website that contains information about different Mar
 https://collectors-vault-render.onrender.com/
 
 ![Diagram](./Diagram.png)
+
+4. Hello from equint!
+4. equint can handle rejection.
