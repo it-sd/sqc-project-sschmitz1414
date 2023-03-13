@@ -66,10 +66,21 @@ express()
   .get('/about', function (req, res) {
     res.render('pages/about')
   })
-  .get('/getSQL', async function (req, res) {
+  .get('/character', function (req, res) {
+    res.render('pages/character')
+  })
+  .get('/comic', function (req, res) {
+    res.render('pages/comic')
+  })
+  .get('/contact', function (req, res) {
+    res.render('pages/contact')
+  })
+  .get('/character', async function (req, res) {
     const characterData = await queryAllCharacters()
+    console.log("characterData" + characterData)
     res.render('pages/character', characterData)
-
+  })
+  .get('/comic', async function (req, res) {
     const comicData = await queryAllComics()
     res.render('pages/comic', comicData)
   })

@@ -1,17 +1,39 @@
 body {
     background-color: black;
+    font-family: Verdana;
+}
+
+nav {
+    text-align: center;
 }
 
 h1 {
-    color: purple;
+    background-color: white;
+    color: red;
     text-align: center;
 }
 
 h2 {
-    color: white;
+    color: purple;
     text-align: center;
 }
 
 p {
     color: white;
+    padding-left: 200px;
+    padding-right: 200px;
+    text-align: center;
+}
+
+ul > li {
+    color: white;
+    padding-left: 200px;
+    padding-right: 200px;
+    text-align: center;
+}
+
+img {
+    align-items: center;
+    display: block;
+    margin: auto;
 }
