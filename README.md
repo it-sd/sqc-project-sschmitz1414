@@ -5,4 +5,4 @@ The Collector's Vault is a website that contains information about different Mar
 
 https://collectors-vault-render.onrender.com/
 
-![Diagram](./Diagram.png)
+![Diagram](docs/Diagram.png)
