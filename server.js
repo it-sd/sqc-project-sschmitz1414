@@ -85,8 +85,7 @@ express()
       const client = await pool.connect()
 
       let feedback
-      if (req.body.feedback > 0 && req.body.feedback < 3) return 'Correct Feedback'
-      else {
+      if (req.body.feedback < 0 && req.body.feedback > 3) {
         console.error(`Unexpected feedback of ${req.body.feedback}`)
         res.status(400).json({ ok: false })
         return
@@ -94,7 +93,7 @@ express()
 
       const insertSql = `INSERT INTO feedback (feedback)
         VALUES ($1::INTEGER, $2::FLOAT, NOW());`
-      await client.query(insertSql, [id, feedback])
+      await client.query(insertSql, [feedback])
 
       res.json({ ok: true })
       client.release()
@@ -104,14 +103,13 @@ express()
     }
   })
 
-  .get('/api', async function () {
+  /* .get('/api', async function () {
     const date = new Date().getTime()
     const privKey = '5128770de98ee15fa624b7fe4c20412f12c43827'
     const pubKey = '8db7b8ff6670008cd11d2540fe0cd63e'
 
     const crypto = require('crypto')
     const hash = crypto.createHash('md5').update(date + privKey + pubKey).digest("hex")
-    
     const endpoint = ('"https://gateway.marvel.com:443/v1/public/comics?apikey=8db7b8ff6670008cd11d2540fe0cd63e&hash=" + hash + ""')
 
     const response = await fetch(endpoint, {
@@ -133,7 +131,7 @@ express()
     const client = await pool.connect()
     const apiSQL = 'INSERT INTO comic (title, creators, startYear) VALUES (title ,creators, startYear);'
     await client.query(apiSQL, [title, creators, startYear])
-  })
+  }) */
   // end of implementation ///////////////////////////////////
   .listen(PORT, () => console.log(`Listening on ${PORT}`))
 
