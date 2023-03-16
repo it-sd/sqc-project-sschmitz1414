@@ -19,8 +19,8 @@ Web Service
 Database Use
 ------------
 
-I will have a character table on the character page. It will have multiple categories of information. The first category will be the name of the hero to tell who the rest of the information is about. Other information will include strengths, weaknesses, outfit description, and if they are in the MCU. The MCU category may also have how long they have been in the MCU and if they never have it will be N/A. I will have to use tables containing character information.
-I will have a comic table on the character page. It will have multiple different characters and will give information about their comics. For example, one of the categories of information will be what comic they first appeared in. Additionally, who created the character themselves. I may try to include an image of their first comic. I will have to use tables containing comic information. I will use both databases and hand-pick specific data to place in my own public database cache.
+I will have a character table on the character page. It will have multiple categories of information. The first category will be the name of the hero to tell who the rest of the information is about. Other information will include powers and weapons. Additionally, their profile will be provided which will include race, gender, and role (such as Hero, Villain, and/or Anti-Hero). I will have to use tables containing character information. I will use both databases and hand-pick specific data to place in my own public database cache.
+I will have a comic table on the comic page. It will have multiple different characters and will give information about their comics. For example, one of the categories of information will be what comic they first appeared in. Furthermore, I will include the release date. Additionally, who created the character themselves. I will have to use tables containing comic information. I will use both databases and hand-pick specific data to place in my own public database cache.
 
 Initial Designs
 ---------------
