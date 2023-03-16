@@ -18,10 +18,29 @@ h2 {
     text-align: center;
 }
 
+h3 {
+    color: pink;
+    text-align: center;
+}
+
 p {
     color: white;
     padding-left: 200px;
     padding-right: 200px;
+    text-align: center;
+}
+
+p {
+    color: white;
+    padding-left: 200px;
+    padding-right: 200px;
+    text-align: center;
+}
+
+
+small {
+    color: black;
+    text-emphasis: 10;
     text-align: center;
 }
 
@@ -36,4 +55,19 @@ img {
     align-items: center;
     display: block;
     margin: auto;
+}
+
+table {
+    color: white;
+    text-align: center;
+}
+
+th{
+    color: white;
+    text-align: center;
+}
+
+td {
+    color: white;
+    text-align: center;
 }
