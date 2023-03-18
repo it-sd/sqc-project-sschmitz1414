@@ -20,15 +20,18 @@
             <h2>Marvel Comics</h2>
             <img src="Comics.png" alt="Stan Lee" width="700" height="400">
             <br>
+            <h3>These comics are the first appearances of the characters!</h3>
             <table width='80%'>
-                <tr style='background-color:black; color:white; text-align:left;'>
-                    <th>Creator</th>
-                    <th>Release Date</th>
+                <tr style='background-color:black; color:white; text-align:center;'>
+                    <th>Title</th>
+                    <th>Creators</th>
+                    <th>Release Year</th>
                 </tr>
-                    <%_ for (const com of comics) { _%>
+                <%_ for (const com of comics) { _%>
                     <tr>
-                        <td><%= com.creator %></td>
-                        <td><%= com.release_date %></td>
+                      <td><%= com.title %></td>
+                      <td><%= com.creators %></td>
+                      <td><%= com.startYear %></td>
                     </tr>
                 <%_ } _%>
             </table>

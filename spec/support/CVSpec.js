@@ -52,4 +52,65 @@ describe('server', function () {
       expect(comicData).toBeDefined()
     })
   })
+
+  describe('GET /about', function () {
+    it('should be defined', async function () {
+      expect('pages/about').toBeDefined()
+    })
+  })
+
+  describe('POST /feedback', function () {
+    const baseURL = 'http://localhost:5163/feedback'
+
+    it('should require feedback to be an integer', async function () {
+      const url = baseURL
+      const data = {
+        // name: name,
+        feedback: 1.5
+      }
+      const response = await fetch(url, {
+        method: 'POST',
+        headers: {
+          Accept: 'application/json',
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(data)
+      })
+      expect(response.ok).toBeFalse()
+    })
+  })
+
+  it('should require feedback to be greater than 0', async function () {
+    const url = baseURL
+    const data = {
+      // name: name,
+      feedback: -1
+    }
+    const response = await fetch(url, {
+      method: 'POST',
+      headers: {
+        Accept: 'application/json',
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(data)
+    })
+    expect(response.ok).toBeFalse()
+  })
+
+  it('should require feedback to be less than 3', async function () {
+    const url = baseURL
+    const data = {
+      // name: name,
+      feedback: 3
+    }
+    const response = await fetch(url, {
+      method: 'POST',
+      headers: {
+        Accept: 'application/json',
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(data)
+    })
+    expect(response.ok).toBeFalse()
+  })
 })

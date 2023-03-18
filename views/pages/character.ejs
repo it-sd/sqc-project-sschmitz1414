@@ -20,9 +20,9 @@
             <h2>Marvel Characters</h2>
             <img id="mainImage" src="Characters.png" alt="Marvel Characters" width="600" height="400">
             <br>
-            <h3>You can only select one favorite!</h3>
+            <h3>Pick your favorites!</h3>
             <table width='80%'>
-                  <tr style='background-color:black; color:white; text-align:left;'>
+                  <tr style='background-color:black; color:white; text-align:center;'>
                       <th>Name</th>
                       <th>Profile</th>
                       <th>Powers</th>
@@ -39,12 +39,6 @@
                           <img id="favoriteImage-<%= char.name %>" src="Empty.png" alt="Empty" width="50" height="50">
                         </h4>
                       </td>
-                      <!--<td>
-                        <div id="worstButton"><button id="Worst-<%= char.name %>" onclick="Submit(document.getElementById('Favorite-<%= char.name %>'), document.querySelector('h4'), '<%= char.name %>', 2)">Worst</button></div>
-                        <h4>
-                          <img id="worstImage" src="Empty.png" alt="Empty" width="50" height="50">
-                        </h4>
-                      </td>-->
                         
                   </tr>
             <%_ } _%>
@@ -54,46 +48,39 @@
             //Submit Function (Parameters from button)
 
             const Submit = async function (button, image, name, feedback) {
-              let enabled = true
-
-              if (enabled == true) {
-                console.log(button)
-                console.log(image)
-                console.log(name)
-                console.log(feedback)
+              console.log(button)
+              console.log(image)
+              console.log(name)
+              console.log(feedback)
 
 
-                button.innerHTML = `<small>Favorited!</small>`
-                image.setAttribute('src', 'ThumbsUp.png')
+              button.innerHTML = `<small>Favorited!</small>`
+              image.setAttribute('src', 'ThumbsUp.png')
 
-                const data = {
-                    name: name,
-                    feedback: feedback
-                }
-
-                const response = await fetch('/feedback', {
-                  method: 'POST',
-                    headers: {
-                    Accept: 'application/json',
-                    'Content-Type': 'application/json'
-                  },
-                  body: JSON.stringify(data)
-                })
-
-                const buttons = document.getElementById('buttons')
-                if (response.ok) {
-                  const result = await response.json()
-                  if (result.ok) {
-                  buttons.innerHTML = '<strong>Thank you for your feedback!</strong>'
-                  return
-                  }
-
-                }
-
-                buttons.innerHTML = '<strong>We couldn\'t record your feedback. Please try again later.</strong>'
-              
-                enabled = false
+              const data = {
+                name: name,
+                feedback: feedback
               }
+
+              const response = await fetch('/feedback', {
+                method: 'POST',
+                headers: {
+                  Accept: 'application/json',
+                  'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(data)
+              })
+
+              const buttons = document.getElementById('buttons')
+              if (response.ok) {
+                const result = await response.json()
+                if (result.ok) {
+                buttons.innerHTML = '<strong>Thank you for your feedback!</strong>'
+                return
+                }
+
+              } 
+              buttons.innerHTML = '<strong>We couldn\'t record your feedback. Please try again later.</strong>'
             }
         </script>
     </body>
